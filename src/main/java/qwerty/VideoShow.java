@@ -10,6 +10,8 @@ import org.opencv.videoio.VideoCapture;
 import javax.swing.*;
 import java.awt.event.WindowEvent;
 
+import static org.opencv.videoio.Videoio.*;
+
 public class VideoShow {
     static {
 //        nu.pattern.OpenCV.loadLocally();
@@ -25,6 +27,8 @@ public class VideoShow {
 
 //        VideoCapture capture = new VideoCapture("src/main/resources/chel.mp4");
         VideoCapture capture = new VideoCapture(0);
+        capture.set(CAP_PROP_FRAME_WIDTH, 360);
+        capture.set(CAP_PROP_FRAME_HEIGHT, 240);
 
         Mat frame = new Mat();
         MatOfByte buf = new MatOfByte();
