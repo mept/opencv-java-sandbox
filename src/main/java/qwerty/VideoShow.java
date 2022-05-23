@@ -25,15 +25,20 @@ public class VideoShow {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
 
-//        VideoCapture capture = new VideoCapture("src/main/resources/chel.mp4");
-        VideoCapture capture = new VideoCapture(0);
+//        VideoCapture capture = new VideoCapture("C:/Users/ya/Downloads/chel.mp4");
+        VideoCapture capture = new VideoCapture(args[0]);
         capture.set(CAP_PROP_FRAME_WIDTH, 360);
         capture.set(CAP_PROP_FRAME_HEIGHT, 240);
+        capture.set(CAP_PROP_FRAME_COUNT, 28);
 
         Mat frame = new Mat();
         MatOfByte buf = new MatOfByte();
         ImageIcon icon;
 
+        if (!capture.isOpened()) {
+            System.out.println("not opened");
+            System.exit(-1);
+        }
         while (capture.grab()) {
             capture.read(frame);
 
